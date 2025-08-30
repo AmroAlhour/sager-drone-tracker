@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import useDroneStore from '../store/droneStore';
 
 // The backend server URL
-const SERVER_URL = 'http://localhost:9013';
+const SERVER_URL = import.meta.env.VITE_API_URL || 'http://localhost:9013';
 
 export const useSocket = () => {
   // Get the updateDrones action from our store

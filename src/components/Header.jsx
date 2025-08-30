@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+
 import React from 'react';
 import SagerLogo from '../assets/sager-logo.svg?react';
 import CaptureIcon from '../assets/capture-svgrepo-com.svg?react';
@@ -12,8 +12,6 @@ const Header = () => {
       <div className="header-logo">
         <SagerLogo />
       </div>
-
-      {/* CHILD 2: A new wrapper for ALL right-side content */}
       <div className="header-right-side">
         <div className="header-icons">
           <button><CaptureIcon /></button>

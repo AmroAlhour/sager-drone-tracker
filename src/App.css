@@ -1,6 +1,4 @@
-/* src/App.css */
 
-/* Basic Setup & Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
@@ -31,14 +29,14 @@ button {
   color: var(--text-secondary);
 }
 
-/* App Layout */
+
 .app-layout {
   display: grid;
   height: 100vh;
   width: 100vw;
-  /* Columns: 100px for the sidebar, 1fr for the rest of the space */
+
   grid-template-columns: 100px 1fr;
-  /* Rows: 70px for the header, 1fr for the rest of the space */
+
   grid-template-rows: 70px 1fr;
   grid-template-areas:
     "header header"
@@ -48,16 +46,16 @@ button {
 .main-content {
   grid-area: main;
   position: relative;
-  /* This prevents the map from breaking the layout on resize */
+
   overflow: hidden; 
 }
 
-/* Sidebar */
+
 .sidebar {
   grid-area: sidebar;
   background-color: var(--bg-secondary);
   border-right: 1px solid var(--border-color);
-  /* The margin-top is NOT needed with CSS Grid */
+
 }
 .sidebar-nav {
   display: flex;
@@ -105,7 +103,6 @@ button {
 }
 
 
-/* Header */
 .header {
   grid-area: header;
   display: flex;
@@ -185,7 +182,7 @@ button {
 }
 
 
-/* Drone Panel */
+
 .drone-panel {
   position: absolute;
   top: 5px;
@@ -248,7 +245,6 @@ button {
   border-radius: 4px;
 }
 
-/* Drone Card */
 .drone-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -296,7 +292,7 @@ button {
   background-color: var(--accent-red);
 }
 
-/* Drone Counter */
+
 .drone-counter {
   position: absolute;
   bottom: 25px;
@@ -322,7 +318,7 @@ button {
   font-size: 0.8rem;
 }
 
-/* Mapbox Overrides */
+
 .mapboxgl-popup-content {
   background-color: var(--bg-main) !important;
   color: var(--text-primary) !important;
@@ -330,15 +326,14 @@ button {
   border-radius: 28px !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
   font-family: 'Roboto', sans-serif !important;
-  width: 150px; /* Set a fixed width */
+  width: 150px; 
 }
 
-/* This is the little triangle pointer at the bottom */
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
   border-top-color: var(--bg-secondary) !important;
 }
 
-/* Hide the default close button if it appears */
+
 .mapboxgl-popup-close-button {
   display: none !important;
 }
@@ -380,11 +375,11 @@ button {
 }
 
 .custom-popup .mapboxgl-popup-tip {
-  /* We are overriding Mapbox's default triangle with our own custom-shaped border */
+
   width: 0;
   height: 0;
-  border: 10px solid transparent; /* Creates the base shape */
-  border-top-color: var(--bg-secondary); /* This makes the top border visible, forming the triangle */
+  border: 10px solid transparent; 
+  border-top-color: var(--bg-secondary);
 }
 
 .mapboxgl-popup-close-button {
@@ -392,31 +387,27 @@ button {
 }
 
 .custom-drone-marker {
-  /* This styles the main circle. 
-     The background-color is set dynamically in the DroneMap.jsx file. */
+
   width: 25px;
   height: 25px;
   border-radius: 50%;
   
-  /* This positions the white drone.svg icon inside the circle */
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%;
   display: flex;
   
   cursor: pointer;
-  position: relative; /* This is crucial for positioning the arrow */
+  position: relative; 
 }
 
-/* The yaw arrow */
 .custom-drone-marker::after {
   content: '';
   position: absolute;
-  top: -8px; /* Position it just above the circle */
+  top: -8px; 
   left: 50%;
   transform: translateX(-50%);
-  
-  /* Create a triangle shape pointing upwards */
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
@@ -436,66 +427,52 @@ button {
 
 .yaw-arrow {
   position: absolute;
-  top: -8px; /* Positions the tip of the arrow just above the circle */
+  top: -8px; 
   left: 50%;
   transform: translateX(-50%);
-  
-  /* These rules create the triangle shape */
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom-width: 10px;
   border-bottom-style: solid;
-  
-  /* The 'border-bottom-color' is set dynamically by the JavaScript in DroneMap.jsx,
-     making it red or green. */
+
 }
 
 @media (max-width: 768px) {
-  /* --- 1. Change the main layout to a single column --- */
+
   .app-layout {
-    /* The sidebar column is removed, everything is in one column */
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
       "main";
   }
 
-  /* --- 2. Hide the desktop sidebar --- */
   .sidebar {
     display: none;
   }
   
-  /* --- 3. Adjust the header for mobile --- */
   .header-logo {
-    display: none; /* Hide the logo to save space */
+    display: none;
   }
   .header {
-    padding: 0 15px; /* Reduce padding */
+    padding: 0 15px;
   }
 
-  /* --- 4. Style the Drone Panel for mobile --- */
   .drone-panel {
-    /* By default, the panel is hidden off-screen to the left */
     transform: translateX(-110%);
     transition: transform 0.3s ease-in-out;
-    
-    /* Make it take up most of the screen */
     width: 90%;
     max-height: 80%;
     top: 15px;
     left: 15px;
   }
   
-  /* When the 'visible' class is added, it slides into view */
   .drone-panel.visible {
     transform: translateX(0);
   }
 
-  /* --- 5. Style and show the mobile toggle button --- */
   .mobile-toggle-button {
-    /* This is hidden on desktop by default */
     display: block; 
     position: absolute;
     bottom: 30px;
@@ -514,7 +491,6 @@ button {
   }
 }
 
-/* --- Hide the mobile button on desktop by default --- */
 .mobile-toggle-button {
   display: none;
 }

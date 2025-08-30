@@ -1,4 +1,4 @@
-// src/components/DronePanel.jsx
+
 import React from 'react';
 import useDroneStore from '../store/droneStore';
 

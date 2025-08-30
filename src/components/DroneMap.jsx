@@ -1,4 +1,4 @@
-// src/components/DroneMap.jsx
+
 import React, { useRef, useEffect, useState, memo } from 'react';
 import mapboxgl from 'mapbox-gl';
 import useDroneStore from '../store/droneStore';
@@ -30,7 +30,7 @@ const DroneMarker = memo(({ map, drone, onClick, onMouseEnter, onMouseLeave }) =
 
   // This effect runs only ONCE when a drone is first created
   useEffect(() => {
-    // Create the necessary HTML elements for the custom marker
+    //necessary HTML elements for the custom marker
     const el = document.createElement('div');
     el.className = 'custom-drone-marker';
     el.style.backgroundImage = `url(${DroneIconUrl})`;
@@ -40,12 +40,12 @@ const DroneMarker = memo(({ map, drone, onClick, onMouseEnter, onMouseLeave }) =
     arrow.className = 'yaw-arrow';
     el.appendChild(arrow);
 
-    // Add event listeners, passing the unique serial number
+    //event listeners, passing the unique serial number
     el.addEventListener('click', (e) => { e.stopPropagation(); onClick(drone.properties.serial); });
     el.addEventListener('mouseenter', () => onMouseEnter(drone.properties.serial));
     el.addEventListener('mouseleave', () => onMouseLeave());
     
-    // Create the Mapbox marker and add it to the map
+    //Mapbox marker and add it to the map
     const marker = new mapboxgl.Marker(el)
       .setLngLat(drone.geometry.coordinates)
       .addTo(map);

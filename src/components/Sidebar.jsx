@@ -1,4 +1,4 @@
-// src/components/Sidebar.jsx
+
 import React from 'react';
 import DashboardIcon from '../assets/dashboard-svgrepo-com-2.svg?react';
 import MapIcon from '../assets/location-svgrepo-com-2.svg?react';

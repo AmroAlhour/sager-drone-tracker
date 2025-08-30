@@ -1,5 +1,5 @@
-// src/App.jsx
-import React, { useState } from 'react'; // <-- Import useState
+
+import React, { useState } from 'react';
 import { useSocket } from './hooks/useSocket';
 import DroneMap from './components/DroneMap';
 import Sidebar from './components/Sidebar';
@@ -10,10 +10,9 @@ import './App.css';
 
 function App() {
   useSocket();
-  // --- THIS IS THE NEW CODE ---
   // State to control the drone panel's visibility on mobile
   const [isPanelVisible, setIsPanelVisible] = useState(false);
-  // -------------------------
+
 
   return (
     <div className="app-layout">
@@ -24,8 +23,6 @@ function App() {
         {/* Pass the state and the setter function to the panel */}
         <DronePanel isVisible={isPanelVisible} setIsVisible={setIsPanelVisible} />
         <DroneCounter />
-
-        {/* --- THIS IS THE NEW CODE --- */}
         {/* This button will only be visible on mobile thanks to CSS */}
         <button 
           className="mobile-toggle-button" 
@@ -33,7 +30,6 @@ function App() {
         >
           {isPanelVisible ? 'Hide List' : 'Show Drones'}
         </button>
-        {/* ------------------------- */}
       </main>
     </div>
   );
